@@ -1,3 +1,6 @@
+import os
+print("GOOGLE_API_KEY present:", os.getenv("GOOGLE_API_KEY", "Not found")[:5] + "...")
+print("GEMINI_API_KEY present:", os.getenv("GEMINI_API_KEY", "Not found")[:5] + "...")
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent

@@ -61,12 +61,14 @@ class ImageToTextTool:
                 "Return the result as a clear and structured list (preferably JSON or YAML format). "
                 "Do not mention items that are not food or drink."
             )
-
+            print("[DEBUG] Calling Gemini Vision model with prompt and image data...")
             response = model.generate_content(
                 contents=[prompt, img_data]
             )
+            print("[DEBUG] Gemini Vision model response received.")
 
             return response.text if response.text else "No items identified."
 
         except Exception as e:
+            print("[ERROR] LLM call failed:", e)
             return f"Error processing the image: {str(e)}"
