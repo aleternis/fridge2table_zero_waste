@@ -2,3 +2,4 @@ streamlit
 crewai
 Pillow
 python-dotenv 
+pysqlite3-binary 
