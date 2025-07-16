@@ -6,8 +6,8 @@ import re
 import sys
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 
 from fridge2table_zero_waste.crew import Fridge2TableZeroWaste
 
