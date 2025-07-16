@@ -1,0 +1,51 @@
+analyze_fridge_photo:
+  description: >
+    Analyze the user-submitted fridge or grocery photo. Identify and list all food items, including estimated quantities, in a clear format from {fridge_photo}.
+  expected_output: >
+    A JSON or YAML list of identified food items and quantities.
+  agent: vision_agent
+
+update_inventory:
+  description: >
+    Update the virtual inventory using the food items identified in the latest photo. Track quantities and highlight any items nearing expiration.
+  expected_output: >
+    An updated inventory list, with alerts for foods to be prioritized in meal planning.
+  agent: inventory_agent
+
+suggest_meal_plan:
+  description: >
+    Create a detailed 7-day meal plan using the current inventory, prioritizing items that should be used soon. Suggest recipes for each meal.
+  expected_output: >
+    Your final answer MUST be a markdown report with this structure:
+
+    ## 7-Day Meal Plan (Based on Inventory)
+
+    Write a short prioritization note listing which ingredients are used first and why.
+
+    ## Day 1
+    - **Breakfast:** Describe meal and which ingredients are used.
+    - **Lunch:** ...
+    - **Dinner:** ...
+    Zero-Waste Tip: ...
+
+    ## Day 2
+    - **Breakfast:** ...
+    - **Lunch:** ...
+    - **Dinner:** ...
+    Zero-Waste Tip: ...
+
+    ...repeat for each day up to Day 7...
+
+    At the end, add a section:
+    ## Zero-Waste Tips & Notes
+    List overall zero-waste tips, reminders, and any notes about inventory or substitutions.
+
+    Only use markdown, with every day as a separate "## Day N" section.
+  agent: meal_planner_agent
+
+find_recipes:
+  description: >
+    Search for or rank recipes that best utilize the inventory, focusing on items that are plentiful or nearing expiration. Filter by dietary preference if specified.
+  expected_output: >
+    A detailed 7-day meal plan in Markdown format, with breakfast, lunch, dinner, ingredient mapping, and zero-waste tips.
+  agent: recipe_finder_agent
