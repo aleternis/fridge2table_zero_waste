@@ -6,6 +6,10 @@ from PIL import Image
 import google.generativeai as genai
 import os
 import PIL.Image
+import logging
+logging.basicConfig(level=logging.INFO)
+logging.info("GOOGLE_API_KEY present: %s...", os.getenv("GOOGLE_API_KEY", "Not found")[:5])
+logging.info("GEMINI_API_KEY present: %s...", os.getenv("GEMINI_API_KEY", "Not found")[:5])
 
 
 
@@ -61,14 +65,14 @@ class ImageToTextTool:
                 "Return the result as a clear and structured list (preferably JSON or YAML format). "
                 "Do not mention items that are not food or drink."
             )
-            print("[DEBUG] Calling Gemini Vision model with prompt and image data...")
+            logging.info("[DEBUG] Calling Gemini Vision model with prompt and image data...")
             response = model.generate_content(
                 contents=[prompt, img_data]
             )
-            print("[DEBUG] Gemini Vision model response received.")
+            logging.info("[DEBUG] Gemini Vision model response received.")
 
             return response.text if response.text else "No items identified."
 
         except Exception as e:
-            print("[ERROR] LLM call failed:", e)
+            logging.error("[ERROR] LLM call failed: %s", e)
             return f"Error processing the image: {str(e)}"
