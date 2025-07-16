@@ -4,6 +4,12 @@ import tempfile
 import os
 import re
 import sys
+try:
+    import pysqlite3
+    sys.modules["sqlite3"] = pysqlite3
+    sys.modules["sqlite3.dbapi2"] = pysqlite3.dbapi2
+except ImportError:
+    pass  # pysqlite3 not installed, fallback to system sqlite3
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 #from dotenv import load_dotenv
