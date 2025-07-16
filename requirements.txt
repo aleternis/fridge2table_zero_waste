@@ -1,0 +1,4 @@
+streamlit
+crewai
+Pillow
+python-dotenv 
