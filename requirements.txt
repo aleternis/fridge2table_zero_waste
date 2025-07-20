@@ -5,3 +5,5 @@ python-dotenv
 pysqlite3-binary 
 google-generativeai 
 pdfkit 
+markdown
+xhtml2pdf 
