@@ -1,3 +1,10 @@
+try:
+    import pysqlite3
+    import sys
+    sys.modules["sqlite3"] = pysqlite3
+except Exception:
+    pass
+
 import streamlit as st
 from PIL import Image
 import tempfile
